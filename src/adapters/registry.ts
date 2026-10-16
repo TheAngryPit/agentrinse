@@ -55,8 +55,6 @@ export function createAuditAdapters(
   options: AuditAdapterRegistryOptions = {},
 ): AuditAdapter[] {
   const reachability = options.reachability ?? new ReachabilityIndex();
-  // Host-wide ownership failures protect the rest of this audit without retrying lsof.
-  // Revalidation and apply construct fresh probes from current process state.
   const processProbe =
     options.processProbe ??
     createProcessOwnershipProbe({
